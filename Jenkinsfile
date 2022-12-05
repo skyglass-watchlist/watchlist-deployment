@@ -1,4 +1,4 @@
-def swarmManager = '10.1.2.104'
+def swarmManager = '10.1.2.164'
 
 node('master'){
     stage('Checkout'){
