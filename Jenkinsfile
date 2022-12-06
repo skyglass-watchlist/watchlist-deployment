@@ -1,17 +1,17 @@
-def swarmManager = '10.1.2.164'
+def region = 'eu-central-1'
+def accounts = [master:'production', preprod:'staging', develop:'sandbox']
 
 node('master'){
     stage('Checkout'){
         checkout scm
     }
 
-     sshagent (credentials: ['swarm-sandbox']){
-         stage('Copy'){
-            sh "scp -o StrictHostKeyChecking=no docker-compose.yml ec2-user@${swarmManager}:/home/ec2-user"
-        }
+    stage('Authentication'){
+        sh "aws eks update-kubeconfig --name ${accounts[env.BRANCH_NAME]} --region ${region}"
+    }
 
-        stage('Deploy stack'){
-            sh "ssh -oStrictHostKeyChecking=no ec2-user@${swarmManager} docker stack deploy --compose-file docker-compose.yml --with-registry-auth watchlist"
-        }
-     }
+    stage('Deploy'){
+        sh 'kubectl apply -f kubectl/deployments/'
+        sh 'kubectl apply -f kubectl/services/'
+    }
 }
