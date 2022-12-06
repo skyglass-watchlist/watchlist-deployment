@@ -36,3 +36,5 @@ spec:
             secretKeyRef:
               name: mongodb-access
               key: database
+        - name: MONGODB_ROOT_PASSWORD
+          value: "root"
