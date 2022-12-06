@@ -15,5 +15,6 @@ spec:
       containers:
       - name: movies-marketplace
         image: skyglass/movies-marketplace:develop
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
