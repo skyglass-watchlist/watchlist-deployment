@@ -11,7 +11,11 @@ node('master'){
     }
 
     stage('Deploy'){
-        sh 'kubectl apply -f kubectl/deployments/'
-        sh 'kubectl apply -f kubectl/services/'
+	   steps {
+	      withKubeConfig([credentialsId: 'kubelogin']) {
+            sh('kubectl apply -f kubectl/deployments/')
+            sh ('kubectl apply -f kubectl/services/')
+		  }
+	   }        
     }
 }
