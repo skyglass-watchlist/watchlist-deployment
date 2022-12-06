@@ -11,7 +11,6 @@ node('master'){
     }    
 
     stage('Deploy'){
-        sh 'kubectl delete -f kubectl/services/'   
         sh 'kubectl delete -f kubectl/deployments/'     
         sh 'kubectl apply -f kubectl/deployments/'
         sh 'kubectl apply -f kubectl/services/'
