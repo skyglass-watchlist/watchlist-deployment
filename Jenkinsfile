@@ -8,14 +8,10 @@ node('master'){
 
     stage('Authentication'){
         sh "aws eks update-kubeconfig --name ${accounts[env.BRANCH_NAME]} --region ${region}"
-    }
+    }    
 
     stage('Deploy'){
-	   steps {
-	      withKubeConfig([credentialsId: 'kubelogin']) {
-            sh('kubectl apply -f kubectl/deployments/')
-            sh ('kubectl apply -f kubectl/services/')
-		  }
-	   }        
+        sh 'kubectl apply -f deployments/'
+        sh 'kubectl apply -f services/'
     }
 }
