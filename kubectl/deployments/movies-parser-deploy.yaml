@@ -15,6 +15,7 @@ spec:
       containers:
       - name: movies-parser
         image: skyglass/movies-parser:develop
+        imagePullPolicy: Always
         env:
         - name: AWS_REGION
           value: eu-central-1
