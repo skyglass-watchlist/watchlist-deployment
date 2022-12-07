@@ -8,5 +8,8 @@ deployment:
     replicas: 1
 
 services:
+  aws:
+    account: '217264062492'
+    region: 'eu-central-1'
   mongodb:
     uri: 'mongodb://watchlist:watchlist@mongodb0:27017/watchlist'
