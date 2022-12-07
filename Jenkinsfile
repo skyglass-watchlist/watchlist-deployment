@@ -12,7 +12,7 @@ node('master'){
 
     stage('Deploy'){
         sh """
-            helm dependency update
+            helm dependency update watchlist
             helm upgrade --install watchlist ./watchlist -f values.override.yaml \
                 --set metadata.jenkins.buildTag=${env.BUILD_TAG} \
                 --set metadata.git.commitId=${getCommitId()}
