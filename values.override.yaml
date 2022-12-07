@@ -1,0 +1,8 @@
+environment: 'sandbox'
+mongodb:
+  mongodbUsername: 'watchlist'
+  mongodbPassword: 'watchlist'
+deployment:
+  tag: 'develop'
+  workers:
+    replicas: 1
