@@ -6,3 +6,7 @@ deployment:
   tag: 'develop'
   workers:
     replicas: 1
+
+services:
+  mongodb:
+    uri: 'mongodb://watchlist:watchlist@mongodb0:27017/watchlist'
