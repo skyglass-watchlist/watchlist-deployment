@@ -12,3 +12,4 @@ dependencies:
     version: 13.5.0
     repository: https://charts.bitnami.com/bitnami
     alias: mongodb
+    namespace: {{ .Values.namespace }}
