@@ -22,7 +22,7 @@ spec:
     spec:
       containers: 
         - name: movies-marketplace
-          image: "{{ .Values.services.registry.uri }}/mlabouardy/movies-marketplace:{{ .Values.deployment.tag }}"
+          image: "skyglass/movies-marketplace:{{ .Values.deployment.tag }}"
           imagePullPolicy: Always
           {{- if .Values.services.registry.secret }}
           imagePullSecrets:
